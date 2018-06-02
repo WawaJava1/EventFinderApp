@@ -141,4 +141,21 @@ UNLOCK TABLES;
 
 -- Dump completed on 2018-05-27 14:41:53
 
-mmmm...
+-- CREATING USERS
+
+TRUNCATE user;
+
+INSERT INTO user (idUser, login, email, displayedName)
+VALUES (1, "Janusz Król", "j.krol@wp.pl", "J.Krol");
+
+INSERT INTO user (idUser, login, email, displayedName)
+VALUES (2, "Brajan Niewiadomski", "b.niewiadomski@wp.pl", "B.Niewiadomski");
+
+INSERT INTO user (idUser, login, email, displayedName)
+VALUES (3, "Adam Kowalski", "a.kowalski@wp.pl", "A.Kowalski");
+
+INSERT INTO user (idUser, login, email, displayedName)
+VALUES (4, "Jadwiga Nowak", "j.nowak@wp.pl", "j.Nowak");
+
+INSERT INTO user (idUser, login, email, displayedName)
+VALUES (5, "Michał Lesiński", "m.lesinski@wp.pl", "M.Lesinski");
