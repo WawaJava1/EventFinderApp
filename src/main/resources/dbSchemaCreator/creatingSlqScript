@@ -112,13 +112,15 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
+  `idUser`        int(11)     NOT NULL AUTO_INCREMENT,
+  `login`         varchar(45) NOT NULL,
+  `email`         varchar(45) NOT NULL,
   `displayedName` varchar(45) NOT NULL,
   PRIMARY KEY (`idUser`),
-  UNIQUE KEY `idUSER_UNIQUE` (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE KEY `idUser_UNIQUE` (`idUser`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,8 +145,6 @@ UNLOCK TABLES;
 
 -- CREATING USERS
 
-TRUNCATE user;
-
 INSERT INTO user (idUser, login, email, displayedName)
 VALUES (1, "Janusz Król", "j.krol@wp.pl", "J.Krol");
 
@@ -159,3 +159,5 @@ VALUES (4, "Jadwiga Nowak", "j.nowak@wp.pl", "j.Nowak");
 
 INSERT INTO user (idUser, login, email, displayedName)
 VALUES (5, "Michał Lesiński", "m.lesinski@wp.pl", "M.Lesinski");
+
+select * from user
