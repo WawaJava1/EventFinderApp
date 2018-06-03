@@ -13,7 +13,7 @@ public class User {
     @Id
     @Getter
     @Setter
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUser")
     private Integer idUser;
 
@@ -28,6 +28,11 @@ public class User {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "PARTICIPATION",
-                joinColumns = {@JoinColumn(name = "idUser")})
+            joinColumns = {@JoinColumn(name = "idUser")})
     private List<Participation> participation;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "COMMENT",
+            joinColumns = {@JoinColumn(name = "idUser")})
+    private List<Comment> comments;
 }
