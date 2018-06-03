@@ -1,6 +1,7 @@
 package entities;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +12,7 @@ public class User {
 
     @Id
     @Getter
+    @Setter
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "idUser")
     private Integer idUser;
@@ -18,9 +20,10 @@ public class User {
     @Column(name = "login")
     private String login;
 
-
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "displayedName")
     private String displayedName;
 
     @ManyToMany(fetch = FetchType.EAGER)

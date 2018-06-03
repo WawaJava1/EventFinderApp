@@ -4,36 +4,42 @@
 -- ------------------------------------------------------
 -- Server version	5.7.21-log
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT = @@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS = @@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION = @@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40103 SET @OLD_TIME_ZONE = @@TIME_ZONE */;
+/*!40103 SET TIME_ZONE = '+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0 */;
+/*!40101 SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES = @@SQL_NOTES, SQL_NOTES = 0 */;
 
 --
 -- Table structure for table `comment`
 --
 
 DROP TABLE IF EXISTS `comment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comment` (
-  `idComment` int(11) NOT NULL AUTO_INCREMENT,
-  `contents` varchar(500) NOT NULL,
-  `idUser` int(11) NOT NULL,
-  `idEvent` int(11) NOT NULL,
+  `idComment` INT(11)      NOT NULL AUTO_INCREMENT,
+  `contents`  VARCHAR(500) NOT NULL,
+  `idUser`    INT(11)      NOT NULL,
+  `idEvent`   INT(11)      NOT NULL,
   PRIMARY KEY (`idComment`),
   UNIQUE KEY `idCOMMENT_UNIQUE` (`idComment`),
   KEY `fk_COMMENT_USER1_idx` (`idUser`),
   KEY `fk_COMMENT_EVENT1_idx` (`idEvent`),
-  CONSTRAINT `fk_COMMENT_EVENT1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`idEvent`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_COMMENT_USER1` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_COMMENT_EVENT1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`idEvent`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_COMMENT_USER1` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,8 +47,10 @@ CREATE TABLE `comment` (
 --
 
 LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+/*!40000 ALTER TABLE `comment`
+  DISABLE KEYS */;
+/*!40000 ALTER TABLE `comment`
+  ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -50,18 +58,21 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `event`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event` (
-  `idEvent` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `access` varchar(45) NOT NULL,
-  `organizer` varchar(45) NOT NULL,
+  `idEvent`   INT(11)      NOT NULL AUTO_INCREMENT,
+  `startDate` DATETIME     NOT NULL,
+  `endDate`   DATETIME     NOT NULL,
+  `name`      VARCHAR(45)  NOT NULL,
+  `address`   VARCHAR(100) NOT NULL,
+  `access`    VARCHAR(45)  NOT NULL,
+  `organizer` VARCHAR(45)  NOT NULL,
   PRIMARY KEY (`idEvent`),
   UNIQUE KEY `idEVENT_UNIQUE` (`idEvent`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,8 +80,10 @@ CREATE TABLE `event` (
 --
 
 LOCK TABLES `event` WRITE;
-/*!40000 ALTER TABLE `event` DISABLE KEYS */;
-/*!40000 ALTER TABLE `event` ENABLE KEYS */;
+/*!40000 ALTER TABLE `event`
+  DISABLE KEYS */;
+/*!40000 ALTER TABLE `event`
+  ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -78,21 +91,27 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `participation`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `participation` (
-  `idParticipation` int(11) NOT NULL AUTO_INCREMENT,
-  `Agreement` varchar(45) NOT NULL,
-  `UserAgreement` varchar(45) NOT NULL,
-  `idUser` int(11) NOT NULL,
-  `idEvent` int(11) NOT NULL,
+  `idParticipation` INT(11)     NOT NULL AUTO_INCREMENT,
+  `Agreement`       VARCHAR(45) NOT NULL,
+  `UserAgreement`   VARCHAR(45) NOT NULL,
+  `idUser`          INT(11)     NOT NULL,
+  `idEvent`         INT(11)     NOT NULL,
   PRIMARY KEY (`idParticipation`),
   UNIQUE KEY `idParticipation_UNIQUE` (`idParticipation`),
   KEY `fk_PARTICIPATION_USER_idx` (`idUser`),
   KEY `fk_PARTICIPATION_EVENT1_idx` (`idEvent`),
-  CONSTRAINT `fk_PARTICIPATION_EVENT1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`idEvent`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_PARTICIPATION_USER` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_PARTICIPATION_EVENT1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`idEvent`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PARTICIPATION_USER` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,8 +119,10 @@ CREATE TABLE `participation` (
 --
 
 LOCK TABLES `participation` WRITE;
-/*!40000 ALTER TABLE `participation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `participation` ENABLE KEYS */;
+/*!40000 ALTER TABLE `participation`
+  DISABLE KEYS */;
+/*!40000 ALTER TABLE `participation`
+  ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -109,13 +130,13 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `idUser`        int(11)     NOT NULL AUTO_INCREMENT,
-  `login`         varchar(45) NOT NULL,
-  `email`         varchar(45) NOT NULL,
-  `displayedName` varchar(45) NOT NULL,
+  `idUser`        INT(11)     NOT NULL AUTO_INCREMENT,
+  `login`         VARCHAR(45) NOT NULL,
+  `email`         VARCHAR(45) NOT NULL,
+  `displayedName` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `idUser_UNIQUE` (`idUser`)
 )
@@ -128,18 +149,20 @@ CREATE TABLE `user` (
 --
 
 LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+/*!40000 ALTER TABLE `user`
+  DISABLE KEYS */;
+/*!40000 ALTER TABLE `user`
+  ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+/*!40103 SET TIME_ZONE = @OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE = @OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-05-27 14:41:53
 
@@ -160,4 +183,5 @@ VALUES (4, "Jadwiga Nowak", "j.nowak@wp.pl", "j.Nowak");
 INSERT INTO user (idUser, login, email, displayedName)
 VALUES (5, "Michał Lesiński", "m.lesinski@wp.pl", "M.Lesinski");
 
-select * from user
+SELECT *
+FROM user
