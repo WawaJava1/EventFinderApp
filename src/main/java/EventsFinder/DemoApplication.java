@@ -1,4 +1,4 @@
-package EventsFinder.demo;
+package EventsFinder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

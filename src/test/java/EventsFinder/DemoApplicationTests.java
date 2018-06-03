@@ -1,4 +1,4 @@
-package EventsFinder.demo;
+package EventsFinder;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
