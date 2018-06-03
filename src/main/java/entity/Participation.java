@@ -1,40 +1,38 @@
-package entities;
+package entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "COMMENT")
-public class Comment {
+@Table(name = "PARTICIPATION")
+public class Participation {
 
     @Id
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idComment")
-    private Integer idComment;
-
-    @Column(name = "contents")
-    private String contnents;
-
-    @Column(name = "idUser")
-    private Integer idUser;
+    @Column(name = "idParticipation")
+    private Integer idParticipation;
 
     @Column(name = "idEvent")
-    private Integer idEvent;
+    private String idEvent;
+
+    @Column(name = "idUser")
+    private String idUser;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "USER",
             joinColumns = {@JoinColumn(name = "idUser")})
-    private List<User> user;
-
+    private User user;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "EVENT",
             joinColumns = {@JoinColumn(name = "idEvent")})
-    private List<Event> event;
+    private Event event;
+
 }
+
+
+

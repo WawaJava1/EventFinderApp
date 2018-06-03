@@ -1,4 +1,4 @@
-package entities;
+package entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,33 +7,33 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "PARTICIPATION")
-public class Participation {
+@Table(name = "COMMENT")
+public class Comment {
 
     @Id
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idParticipation")
-    private Integer idParticipation;
+    @Column(name = "idComment")
+    private Integer idComment;
 
-    @Column(name = "idEvent")
-    private String idEvent;
+    @Column(name = "contents")
+    private String contnents;
 
     @Column(name = "idUser")
-    private String idUser;
+    private Integer idUser;
+
+    @Column(name = "idEvent")
+    private Integer idEvent;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "USER",
             joinColumns = {@JoinColumn(name = "idUser")})
     private User user;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "EVENT",
             joinColumns = {@JoinColumn(name = "idEvent")})
     private Event event;
-
 }
-
-
-
