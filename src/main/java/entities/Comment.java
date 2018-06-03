@@ -16,4 +16,5 @@ public class Comment {
     private Integer idUser;
 
     private Integer idEvent;
+
 }
