@@ -32,6 +32,7 @@ public class Participation {
     @JoinTable(name = "EVENT",
             joinColumns = {@JoinColumn(name = "idEvent")})
     private Event event;
+
 }
 
 
