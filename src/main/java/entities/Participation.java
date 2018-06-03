@@ -26,7 +26,12 @@ public class Participation {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "USER",
             joinColumns = {@JoinColumn(name = "idUser")})
-            private List<User> user;
+    private User user;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "EVENT",
+            joinColumns = {@JoinColumn(name = "idEvent")})
+    private Event event;
 }
 
 
