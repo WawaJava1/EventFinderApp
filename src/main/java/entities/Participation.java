@@ -27,6 +27,8 @@ public class Participation {
     @JoinTable(name = "USER",
             joinColumns = {@JoinColumn(name = "idUser")})
             private List<User> user;
+
+
 }
 
 
