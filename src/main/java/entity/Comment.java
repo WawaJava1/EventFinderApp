@@ -32,6 +32,7 @@ public class Comment {
     private User user;
 
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "EVENT",
             joinColumns = {@JoinColumn(name = "idEvent")})
