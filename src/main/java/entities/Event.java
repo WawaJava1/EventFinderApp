@@ -10,7 +10,7 @@ import java.util.List;
 public class Event {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idEvent")
     private Integer idEvent;
 
@@ -32,20 +32,14 @@ public class Event {
     @Column(name = "organizer")
     private String organizer;
 
-    @OneToMany(fetch =  FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "PARTICIPATION",
             joinColumns = {@JoinColumn(name = "idEvent")})
     private List<Participation> participation;
 
 
-
-
-
-    @OneToMany(fetch =  FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "COMMENT",
             joinColumns = {@JoinColumn(name = "idEvent")})
     private List<Comment> comment;
-    )
-
-
 }
