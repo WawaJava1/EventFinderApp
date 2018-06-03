@@ -26,9 +26,8 @@ public class User {
     @Column(name = "displayedName")
     private String displayedName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "PARTICIPATION",
-                joinColumns = {@JoinColumn(name = "idUser")},
-                inverseJoinColumns = {@JoinColumn(name = "idEvent")})
-    private List<Event> events;
+                joinColumns = {@JoinColumn(name = "idUser")})
+    private List<Participation> participation;
 }
