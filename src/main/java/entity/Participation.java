@@ -17,10 +17,10 @@ public class Participation {
     private Integer idParticipation;
 
     @Column(name = "idEvent")
-    private String idEvent;
+    private Integer idEvent;
 
     @Column(name = "idUser")
-    private String idUser;
+    private Integer idUser;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "USER",
