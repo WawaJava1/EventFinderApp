@@ -12,9 +12,7 @@ public class EventQuery {
     public EventQuery() {
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public Integer getIdEvent() {
         return idEvent;

@@ -12,7 +12,5 @@ public class CommentQuery {
         return idUser;
     }
 
-    public Integer getIdEvent() {
-        return idEvent;
-    }
+    public Integer getIdEvent() { return idEvent; }
 }

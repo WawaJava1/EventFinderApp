@@ -2,6 +2,9 @@ package query;
 
 public class ParticipationQuery {
 
-    private String idEvent;
-    private String idUser;
+    private Integer idEvent;
+    private Integer idUser;
+
+//    po nazwie eventu
+    private String name;
 }
