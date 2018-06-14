@@ -7,4 +7,19 @@ public class ParticipationQuery {
 
 //    po nazwie eventu
     private String name;
+
+    public ParticipationQuery() {
+    }
+
+    public Integer getIdEvent() {
+        return idEvent;
+    }
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
