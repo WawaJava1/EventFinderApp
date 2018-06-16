@@ -7,7 +7,6 @@ public class EventQuery {
     private Integer idEvent;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private String organizer;
 
     public EventQuery() {
     }
@@ -26,7 +25,4 @@ public class EventQuery {
         return endDate;
     }
 
-    public String getOrganizer() {
-        return organizer;
     }
-}
