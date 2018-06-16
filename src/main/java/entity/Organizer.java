@@ -4,44 +4,41 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
+
 
 @Entity
-@Table(name = "PARTICIPATION")
-public class Participation {
+@Table(name = "ORGANIZER")
+public class Organizer {
+
 
     @Id
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idParticipation")
-    private Integer idParticipation;
+    @Column(name = "idUser")
+    private Integer idUser;
 
     @Column(name = "idEvent")
     private Integer idEvent;
 
-    @Column(name = "idUser")
-    private Integer idUser;
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER",
             joinColumns = {@JoinColumn(name = "idUser")})
-    private User user;
+    private List <User> user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "EVENT",
             joinColumns = {@JoinColumn(name = "idEvent")})
-    private Event event;
+    private List <Event> event;
 
-    private Participation() {
+    private Organizer() {
     }
 
-    public Participation(Integer idEvent, Integer idUser, User user, Event event) {
+    public Organizer(Integer idEvent, List<User> user, List<Event> event) {
         this.idEvent = idEvent;
-        this.idUser = idUser;
         this.user = user;
         this.event = event;
     }
 }
-
-
 

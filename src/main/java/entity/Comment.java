@@ -37,4 +37,15 @@ public class Comment {
     @JoinTable(name = "EVENT",
             joinColumns = {@JoinColumn(name = "idEvent")})
     private Event event;
+
+    private Comment() {
+    }
+
+    public Comment(String contnents, Integer idUser, Integer idEvent, User user, Event event) {
+        this.contnents = contnents;
+        this.idUser = idUser;
+        this.idEvent = idEvent;
+        this.user = user;
+        this.event = event;
+    }
 }

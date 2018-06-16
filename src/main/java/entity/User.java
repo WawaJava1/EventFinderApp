@@ -35,4 +35,21 @@ public class User {
     @JoinTable(name = "COMMENT",
             joinColumns = {@JoinColumn(name = "idUser")})
     private List<Comment> comments;
+
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinTable (name = "ORGANIZER",
+    joinColumns = {@JoinColumn(name = "idUser")})
+    private Organizer organizer;
+
+    private User() {
+    }
+
+    public User(String login, String email, String displayedName, List<Participation> participation, List<Comment> comments, Organizer organizer) {
+        this.login = login;
+        this.email = email;
+        this.displayedName = displayedName;
+        this.participation = participation;
+        this.comments = comments;
+        this.organizer = organizer;
+    }
 }

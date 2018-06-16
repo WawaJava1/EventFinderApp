@@ -41,4 +41,18 @@ public class Event {
     @JoinTable(name = "COMMENT",
             joinColumns = {@JoinColumn(name = "idEvent")})
     private List<Comment> comment;
+
+    private Event() {
+    }
+
+    public Event(LocalDateTime startDate, LocalDateTime endDate, String name, String address, String access, String organizer, List<Participation> participation, List<Comment> comment) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.name = name;
+        this.address = address;
+        this.access = access;
+        this.organizer = organizer;
+        this.participation = participation;
+        this.comment = comment;
+    }
 }
